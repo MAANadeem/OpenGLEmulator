@@ -28,5 +28,11 @@
     <ClInclude Include="Bus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Thumb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Arm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

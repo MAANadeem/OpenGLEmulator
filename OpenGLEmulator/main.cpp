@@ -1,14 +1,47 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
+#include <string>
+#include "CPU.h"
 
 int main(int argc, char* argv[]) {
+
+    CPU arm7 = CPU();
+    std::string input;
+    while (true) {
+        for (int i = 0; i < 13; ++i) {
+            int32_t reg = (int32_t)arm7.GetReg(i);
+            std::cout << " REG " << i << ": " << reg;
+        }
+        std::cout << std::endl;
+        std::cout << " N: " << arm7.GetFlag(CPU::cpsr_flags::N);
+        std::cout << " Z: " << arm7.GetFlag(CPU::cpsr_flags::Z);
+        std::cout << " C: " << arm7.GetFlag(CPU::cpsr_flags::C);
+        std::cout << " V: " << arm7.GetFlag(CPU::cpsr_flags::V);
+        std::cout << std::endl;
+
+        std::getline(std::cin, input);
+        if (input == "q") {
+            break;
+        }
+        int length = input.length();
+        int pow = 1;
+        int total = 0;
+        for (int i = 0; i < length; ++i) {
+            if (input[length - i - 1] == '1') {
+                total += pow;
+            }
+            pow *= 2;
+        }
+        uint16_t opcode = total;
+        arm7.ExecuteThumb(opcode);
+    }
+
+    /*
     GLFWwindow* window;
 
-    /* Initialize the library */
     if (!glfwInit())
         return -1;
 
-    /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(800, 600, "GBA", NULL, NULL);
     if (!window)
     {
@@ -16,13 +49,11 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
     float move = 1.0f / 600.0f;
     float x = 0.0;
 
-    /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         // Clear the screen
@@ -47,5 +78,7 @@ int main(int argc, char* argv[]) {
     }
 
     glfwTerminate();
+
+    */
     return 0;
 }

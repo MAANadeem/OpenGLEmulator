@@ -142,8 +142,10 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Arm.h" />
     <ClInclude Include="Bus.h" />
     <ClInclude Include="CPU.h" />
+    <ClInclude Include="Thumb.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,7 +11,7 @@ public:
 	uint8_t read(uint16_t addr);
 private:
 	CPU cpu;
-	
+	std::array<u32, 0x8000> wram;
 };
 
 /*
